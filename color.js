@@ -18,9 +18,10 @@ Color.prototype.dividedBy = function(n){
   )
 }
 Color.prototype.approach = function(c,c2){
-  var r = this.r > c.r ? this.r = this.r - c2.r : this.r + c2.r
-  var g = this.g > c.g ? this.g = this.g - c2.g : this.g + c2.g
-  var b = this.b > c.b ? this.b = this.b - c2.b : this.b + c2.b
-  return new Color(r,g,b)
+  return new Color(
+    this.r > c.r ? this.r = this.r - c2.r : this.r + c2.r,
+    this.g > c.g ? this.g = this.g - c2.g : this.g + c2.g,
+    this.b > c.b ? this.b = this.b - c2.b : this.b + c2.b
+  )
 }
 module.exports = Color
