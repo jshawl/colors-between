@@ -7,5 +7,5 @@ function colorsBetween(c1,c2, n){
     out.push(out[i].approach(c2, diff))
   }
   out.push(c2)
-  return out
+  return out.map(c => c.toHex())
 }

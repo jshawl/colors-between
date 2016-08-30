@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    #ex{
+      margin-top:1em;
+    }
+    #ex div {
+      padding:1em;
+      text-align:center;
+      font-family: Monaco, monospace;
+    }
+    #ex div span{
+      background:rgba(0,0,0,.125);
+      padding:.5em;
+      color:#fff;
+    }
+  </style>
+</head>
+<body onload='reset()'>
+  <input type='number' onchange='reset()' value='5' id='n'>
+  <input type='color' oninput='reset()' value='#FF4136' id='c1'>
+  <input type='color' oninput='reset()' value='#FFDC00' id='c2'>
+  <div id='ex'></div>
+  <script src='../color.js'></script>
+  <script src='../colorsBetween.js'></script>
+  <script>
+    function reset(){
+      var cols = colorsBetween(c1.value,c2.value,parseInt(n.value))
+      console.log(cols);
+      ex.innerHTML = ''
+      cols.map(col => {
+	ex.innerHTML += "<div style='background:"+col+"'><span>"+ col +"</span></div>"
+      })
+    }
+  </script>
+</body>
+</html>

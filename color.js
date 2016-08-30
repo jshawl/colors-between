@@ -25,14 +25,25 @@ Color.prototype.dividedBy = function(n){
 }
 Color.prototype.approach = function(c,c2){
   return new Color(
-    this.r > c.r ? this.r = this.r - c2.r : this.r + c2.r,
-    this.g > c.g ? this.g = this.g - c2.g : this.g + c2.g,
-    this.b > c.b ? this.b = this.b - c2.b : this.b + c2.b
+    this.r > c.r ? this.r - c2.r : this.r + c2.r,
+    this.g > c.g ? this.g - c2.g : this.g + c2.g,
+    this.b > c.b ? this.b - c2.b : this.b + c2.b
   )
+}
+Color.prototype.toHex = function(){
+  return "#" +
+    pad(Math.round(this.r).toString(16)) +
+    pad(Math.round(this.g).toString(16)) +
+    pad(Math.round(this.b).toString(16))
 }
 function fromHex(str){
   return str
     .substr(1)
     .match(/.{1,2}/g)
     .map(n => parseInt(n, 16))
+}
+function pad(n){
+  var str = "" + n
+  var pad = "00"
+  return pad.substring(0, pad.length - str.length) + str
 }
