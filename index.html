@@ -2,13 +2,15 @@
 <html>
 <head>
   <style>
+    body, pre{
+      font-family: Monaco, monospace;
+    }
     #ex{
       margin-top:1em;
     }
     #ex div {
       padding:1em;
       text-align:center;
-      font-family: Monaco, monospace;
     }
     #ex div span{
       background:rgba(0,0,0,.125);
@@ -18,17 +20,20 @@
   </style>
 </head>
 <body onload='reset()'>
+  <h1>Colors Between</h1>
   <input type='number' onchange='reset()' value='5' id='n'>
   <input type='color' oninput='reset()' value='#FF4136' id='c1'>
   <input type='color' oninput='reset()' value='#FFDC00' id='c2'>
+  <pre id='pre'>colorsBetween('#ff4136','#ffdc00', 5)</pre>
   <div id='ex'></div>
-  <script src='../color.js'></script>
-  <script src='../colorsBetween.js'></script>
+  <script src='color.js'></script>
+  <script src='colorsBetween.js'></script>
   <script>
     function reset(){
       var cols = colorsBetween(c1.value,c2.value,parseInt(n.value))
       console.log(cols);
       ex.innerHTML = ''
+      pre.innerHTML = 'colorsBetween("'+c1.value+'","'+c2.value+'",'+n.value+')'
       cols.map(col => {
 	ex.innerHTML += "<div style='background:"+col+"'><span>"+ col +"</span></div>"
       })
