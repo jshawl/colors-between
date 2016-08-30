@@ -1,4 +1,3 @@
-var Color = require("../color")
 describe("color", function(){
   it("can diff another color", function(){
     var c1 = new Color(0,0,0)
@@ -27,5 +26,17 @@ describe("color", function(){
     var diff = new Color(45,45,45)
     var c2 = new Color(10,10,10)
     expect(c3.r).toEqual(55)
+  })
+  it("can be generated from hex", function(){
+    var hex = "#000000"
+    var c = new Color(hex)
+    expect(c.r).toEqual(0)
+    expect(c.g).toEqual(0)
+    expect(c.b).toEqual(0)
+    var hex = "#ffffff"
+    var c = new Color(hex)
+    expect(c.r).toEqual(255)
+    expect(c.g).toEqual(255)
+    expect(c.b).toEqual(255)
   })
 })
